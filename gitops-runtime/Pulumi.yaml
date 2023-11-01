@@ -1,0 +1,6 @@
+name: gitops-runtime
+runtime:
+  name: nodejs
+  options:
+    typescript: false
+description: Installing the GitOps Runtime

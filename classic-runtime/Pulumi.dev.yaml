@@ -1,0 +1,7 @@
+config:
+  classic-runtime:cf-account-id: 603d4a181c269ee49df9b94f
+  classic-runtime:cf-api-token:
+    secure: AAABALo8iP5qTpkMqERgBGoYDpu8z+Xys7mcSUtKAYa8PBx4rsO6WBFze9bE9DaCUzlT065hal+BTSeYrPcQoodg60seb8cN1Ntkfq7XOT2il/sFRKDqNpQ=
+  classic-runtime:chart-url: oci://quay.io/codefresh/cf-runtime
+  classic-runtime:cluster-name: dev-cluster
+  classic-runtime:namespace: codefresh-classic

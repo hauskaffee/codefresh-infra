@@ -1,0 +1,10 @@
+{
+    "name": "gitops-runtime",
+    "main": "index.js",
+    "type": "module",
+    "dependencies": {
+        "@pulumi/command": "^0.9.2",
+        "@pulumi/kubernetes": "^4.5.3",
+        "@pulumi/pulumi": "^3.0.0"
+    }
+}
