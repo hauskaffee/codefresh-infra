@@ -3,6 +3,7 @@ config:
   gitops-runtime:cf-api-token:
     secure: AAABAABEdjUgpXdSCPs4FESiZPeN4/l8E3rAOjpNv6gwoNVWJCrST+xI0tdpQJpUEpWo2rKtU5kwg9084ugkkqsUjKZ4tgmt2e25KNJjuSunBbYLAV4iu+M=
   gitops-runtime:chart-url: oci://quay.io/codefresh/gitops-runtime
+  gitops-runtime:chart-version: 0.3.1
   gitops-runtime:github-pat:
     secure: AAABAIDit3Abacr6BtIjK3bLp4osrrENGCofl5HxZsUd/yAac58i/6h4nTRHvXVN+TWwvrGwSWKMvtsGft/Byg9Chap6y89c
   gitops-runtime:github-user: mnmlluke

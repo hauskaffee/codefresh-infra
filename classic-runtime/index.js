@@ -6,6 +6,7 @@ const config = new pulumi.Config();
 
 const classicRE = new kubernetes.helm.v3.Release("cf-classic", {
     chart: config.require("chart-url"),
+    version: config.get("chart-version"),
     name: "cf-classic-runtime",
     namespace: config.require("namespace"),
     createNamespace: true,
@@ -22,5 +23,4 @@ const classicRE = new kubernetes.helm.v3.Release("cf-classic", {
 });
 
 export const helmVersion = classicRE.version;
-export const appVersion = classicRE.appVersion;
 export const status = classicRE.status;

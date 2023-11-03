@@ -3,5 +3,6 @@ config:
   classic-runtime:cf-api-token:
     secure: AAABALo8iP5qTpkMqERgBGoYDpu8z+Xys7mcSUtKAYa8PBx4rsO6WBFze9bE9DaCUzlT065hal+BTSeYrPcQoodg60seb8cN1Ntkfq7XOT2il/sFRKDqNpQ=
   classic-runtime:chart-url: oci://quay.io/codefresh/cf-runtime
+  classic-runtime:chart-version: 6.2.6
   classic-runtime:cluster-name: dev-cluster
   classic-runtime:namespace: codefresh-classic

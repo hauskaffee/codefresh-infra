@@ -7,6 +7,7 @@ const config = new pulumi.Config();
 
 const gitopsRE = new kubernetes.helm.v3.Release("cf-gitops", {
     chart: config.require("chart-url"),
+    version: config.get("chart-version"),
     name: "cf-gitops-runtime",
     namespace: config.require("namespace"),
     createNamespace: true,
@@ -38,5 +39,4 @@ const gitopsPostIntall = new local.Command("cfPostInstall", {
 }, { dependsOn: [gitopsRE] });
 
 export const helmVersion = gitopsRE.version;
-export const appVersion = gitopsRE.appVersion;
 export const status = gitopsRE.status;
