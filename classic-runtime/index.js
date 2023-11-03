@@ -6,6 +6,7 @@ const config = new pulumi.Config();
 
 const classicRE = new kubernetes.helm.v3.Release("cf-classic", {
     chart: config.require("chart-url"),
+    name: "cf-classic-runtime",
     namespace: config.require("namespace"),
     createNamespace: true,
     waitForJobs: true,
