@@ -39,4 +39,4 @@ const gitopsPostIntall = new local.Command("cfPostInstall", {
 export const helmVersion = gitopsRE.version;
 export const appVersion = gitopsRE.appVersion;
 export const status = gitopsRE.status;
-export const gitopsPostInstall = cfPostIntall.stdout;
+export const gitopsPostInstall = gitopsPostIntall.stdout;
