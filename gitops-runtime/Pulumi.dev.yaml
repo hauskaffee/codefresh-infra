@@ -1,11 +1,11 @@
 config:
-  gitops-runtime:cf-account-id: 603d4a181c269ee49df9b94f
+  gitops-runtime:cf-account-id: 5f8db07b4e6ba71a9d6a4bdb
   gitops-runtime:cf-api-token:
-    secure: AAABAABEdjUgpXdSCPs4FESiZPeN4/l8E3rAOjpNv6gwoNVWJCrST+xI0tdpQJpUEpWo2rKtU5kwg9084ugkkqsUjKZ4tgmt2e25KNJjuSunBbYLAV4iu+M=
+    secure: AAABAKPuuhSczyIacZlxtHgssFCSQfGxJPRlhEPPs8ggl3/LuaVQDGNMVho796OAZawOYTrib8fGAX/iPVehLCD4cl7MwA39xruOSJAbe+VNImI6xTjMllM=
   gitops-runtime:chart-url: oci://quay.io/codefresh/gitops-runtime
   gitops-runtime:chart-version: 0.3.3
   gitops-runtime:github-pat:
     secure: AAABAIDit3Abacr6BtIjK3bLp4osrrENGCofl5HxZsUd/yAac58i/6h4nTRHvXVN+TWwvrGwSWKMvtsGft/Byg9Chap6y89c
-  gitops-runtime:github-user: mnmlluke
+  gitops-runtime:github-user: lukegoodfellow
   gitops-runtime:namespace: codefresh-gitops
   gitops-runtime:re-name: dev-cluster

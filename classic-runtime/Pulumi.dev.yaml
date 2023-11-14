@@ -1,7 +1,7 @@
 config:
-  classic-runtime:cf-account-id: 603d4a181c269ee49df9b94f
+  classic-runtime:cf-account-id: 5f8db07b4e6ba71a9d6a4bdb
   classic-runtime:cf-api-token:
-    secure: AAABALo8iP5qTpkMqERgBGoYDpu8z+Xys7mcSUtKAYa8PBx4rsO6WBFze9bE9DaCUzlT065hal+BTSeYrPcQoodg60seb8cN1Ntkfq7XOT2il/sFRKDqNpQ=
+    secure: AAABABtNLP3brlsqsMdpAafRrYDqOm7sh0B8jk944P6lPblLFlz5kA2mYtXU2HC9YjRJT0rq7yEBp6FCjs24HSb1fC6RCmc1xlTG0bZvWbUtBLv5e8JDAK0=
   classic-runtime:chart-url: oci://quay.io/codefresh/cf-runtime
   classic-runtime:chart-version: 6.2.6
   classic-runtime:cluster-name: dev-cluster
