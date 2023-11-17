@@ -1,0 +1,8 @@
+config:
+  aws-infra:desiredClusterSize: "1"
+  aws-infra:eksNodeInstanceType: t3.xlarge
+  aws-infra:maxClusterSize: "5"
+  aws-infra:minClusterSize: "1"
+  aws-infra:ownerTag: luke
+  aws-infra:region: us-east-1
+  aws-infra:vpcNetworkCidr: 192.168.100.0/24

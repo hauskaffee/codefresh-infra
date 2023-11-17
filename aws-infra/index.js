@@ -10,9 +10,9 @@ const maxClusterSize = config.getNumber("maxClusterSize") || 6;
 const desiredClusterSize = config.getNumber("desiredClusterSize") || 1;
 const eksNodeInstanceType = config.get("eksNodeInstanceType") || "t3.medium";
 const vpcNetworkCidr = config.get("vpcNetworkCidr") || "10.0.0.0/16";
-const ownerTags = { "owner": config.getNumber("ownerTag"), "pulumi": "true", "pulumi-stack": pulumi.getStack(), "pulumi-project": pulumi.getProject() }
+const ownerTags = { "owner": config.require("ownerTag"), "pulumi": "true", "pulumi-stack": pulumi.getStack(), "pulumi-project": pulumi.getProject() }
 
-const vpc01 = new awsx.ec2.Vpc(`${config.getNumber("ownerTag")}-VPC`, {
+const vpc01 = new awsx.ec2.Vpc(`${config.require("ownerTag")}-VPC`, {
     enableDnsHostnames: true,
     cidrBlock: vpcNetworkCidr,
     tags: ownerTags,
@@ -27,7 +27,7 @@ const vpc01 = new awsx.ec2.Vpc(`${config.getNumber("ownerTag")}-VPC`, {
     }
 });
 
-const eksNodeRole = new aws.iam.Role(`${config.getNumber("ownerTag")}-k8s-eksRole-node`, {
+const eksNodeRole = new aws.iam.Role(`${config.require("ownerTag")}-k8s-eksRole-node`, {
     assumeRolePolicy: aws.iam.assumeRolePolicyForPrincipal({
         Service: "ec2.amazonaws.com",
     }),
@@ -37,7 +37,7 @@ const eksNodeRole = new aws.iam.Role(`${config.getNumber("ownerTag")}-k8s-eksRol
     tags: ownerTags
 });
 
-const k8s01 = new eks.Cluster(`${config.getNumber("ownerTag")}-k8s`, {
+const k8s01 = new eks.Cluster(`${config.require("ownerTag")}-k8s`, {
     version: "1.28",
     vpcId: vpc01.vpcId,
     publicSubnetIds: vpc01.publicSubnetIds,
@@ -48,7 +48,7 @@ const k8s01 = new eks.Cluster(`${config.getNumber("ownerTag")}-k8s`, {
     tags: ownerTags,
 });
 
-const ng01 = new eks.ManagedNodeGroup(`${config.getNumber("ownerTag")}-ng`, {
+const ng01 = new eks.ManagedNodeGroup(`${config.require("ownerTag")}-ng`, {
     cluster: k8s01,
     capacityType: "SPOT",
     instanceTypes: [eksNodeInstanceType],

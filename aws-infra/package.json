@@ -1,5 +1,5 @@
 {
-    "name": "aws",
+    "name": "aws-infra",
     "main": "index.js",
     "type": "module",
     "dependencies": {

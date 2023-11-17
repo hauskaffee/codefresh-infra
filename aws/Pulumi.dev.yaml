@@ -1,7 +1,0 @@
-config:
-  aws:desiredClusterSize: "1"
-  aws:eksNodeInstanceType: t3.xlarge
-  aws:maxClusterSize: "5"
-  aws:minClusterSize: "1"
-  aws:ownerTag: luke
-  aws:vpcNetworkCidr: 192.168.100.0/24
