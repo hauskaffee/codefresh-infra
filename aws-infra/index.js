@@ -63,5 +63,6 @@ const ng01 = new eks.ManagedNodeGroup(`${config.require("ownerTag")}-ng`, {
 
 
 export const vpcId = vpc01.vpcId;
+export const clusterName = k8s01.eksCluster.name
 export const addCluster = pulumi.interpolate`aws eks update-kubeconfig --name ${k8s01.eksCluster.name}`;
 export const removeCluster = pulumi.interpolate`kubectl config unset users.${k8s01.eksCluster.arn} && kubectl config unset contexts.${k8s01.eksCluster.arn} && kubectl config unset clusters.${k8s01.eksCluster.arn}`;

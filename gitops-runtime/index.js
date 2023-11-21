@@ -4,6 +4,11 @@ import * as kubernetes from "@pulumi/kubernetes";
 import { local } from "@pulumi/command";
 
 const config = new pulumi.Config();
+const org = pulumi.getOrganization();
+const stack = pulumi.getStack();
+const stackRef = new pulumi.StackReference(`${org}/aws-infra/${stack}`);
+const k8sCluster = stackRef.getOutput("clusterName").apply(cluster => cluster.toLowerCase());
+
 
 const gitopsRE = new kubernetes.helm.v3.Release("cf-gitops", {
     chart: config.require("chart-url"),
@@ -21,7 +26,7 @@ const gitopsRE = new kubernetes.helm.v3.Release("cf-gitops", {
                 }
             },
             runtime: {
-                name: config.require("re-name"),
+                name: k8sCluster,
                 gitCredentials: {
                     username: config.require("github-user"),
                     password: {
@@ -34,7 +39,7 @@ const gitopsRE = new kubernetes.helm.v3.Release("cf-gitops", {
 });
 
 const gitopsPostIntall = new local.Command("cfPostInstall", {
-    create: pulumi.interpolate`cf integration git register default --runtime ${config.require("re-name")} --token ${config.requireSecret("github-pat")}`
+    create: pulumi.interpolate`cf integration git register default --runtime ${k8sCluster} --token ${config.requireSecret("github-pat")}`
 }, { dependsOn: [gitopsRE] });
 
 export const helmVersion = gitopsRE.version;

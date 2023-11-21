@@ -7,4 +7,3 @@ config:
     secure: AAABAIDit3Abacr6BtIjK3bLp4osrrENGCofl5HxZsUd/yAac58i/6h4nTRHvXVN+TWwvrGwSWKMvtsGft/Byg9Chap6y89c
   gitops-runtime:github-user: lukegoodfellow
   gitops-runtime:namespace: codefresh-gitops
-  gitops-runtime:re-name: dev-cluster

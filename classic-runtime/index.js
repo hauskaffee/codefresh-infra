@@ -3,6 +3,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as kubernetes from "@pulumi/kubernetes";
 
 const config = new pulumi.Config();
+const org = pulumi.getOrganization();
+const stack = pulumi.getStack();
+const stackRef = new pulumi.StackReference(`${org}/aws-infra/${stack}`);
+const k8sCluster = stackRef.getOutput("clusterName").apply(cluster => cluster.toLowerCase());
 
 const classicRE = new kubernetes.helm.v3.Release("cf-classic", {
     chart: config.require("chart-url"),
@@ -15,8 +19,8 @@ const classicRE = new kubernetes.helm.v3.Release("cf-classic", {
         global: {
             codefreshToken: config.requireSecret("cf-api-token"),
             accountId: config.require("cf-account-id"),
-            context: config.require("cluster-name"),
-            agentName: config.require("cluster-name"),
+            context: k8sCluster,
+            agentName: k8sCluster,
         }
     },
 });
