@@ -15,5 +15,5 @@ output "status" {
 
 output "post_install_commands" {
   description = "Cli command for post install"
-  value       = "cf integration git register default --runtime ${data.terraform_remote_state.aws_infra.outputs.cluster_name} --token $GITHUB_PAT"
+  value       = "cf integration git register default --runtime ${data.terraform_remote_state.aws_infra.outputs.cluster_name} --token $CF_GITHUB_PAT"
 }
