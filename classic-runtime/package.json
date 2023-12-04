@@ -1,9 +1,0 @@
-{
-    "name": "classic-runtime",
-    "main": "index.js",
-    "type": "module",
-    "dependencies": {
-        "@pulumi/kubernetes": "^4.5.3",
-        "@pulumi/pulumi": "^3.0.0"
-    }
-}

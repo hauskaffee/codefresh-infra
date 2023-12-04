@@ -1,6 +1,0 @@
-name: classic-runtime
-runtime:
-  name: nodejs
-  options:
-    typescript: false
-description: Installing the Classic Runtime

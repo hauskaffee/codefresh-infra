@@ -1,6 +1,0 @@
-config:
-  classic-runtime:cf-account-id: 5f8db07b4e6ba71a9d6a4bdb
-  classic-runtime:cf-api-token:
-    secure: AAABABtNLP3brlsqsMdpAafRrYDqOm7sh0B8jk944P6lPblLFlz5kA2mYtXU2HC9YjRJT0rq7yEBp6FCjs24HSb1fC6RCmc1xlTG0bZvWbUtBLv5e8JDAK0=
-  classic-runtime:chart-url: oci://quay.io/codefresh/cf-runtime
-  classic-runtime:namespace: codefresh-classic
