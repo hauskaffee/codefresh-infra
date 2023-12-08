@@ -1,3 +1,11 @@
+resource "codefresh_project" "luke-cf" {
+  name = "luke-cf"
+  tags = [
+    "owner:luke",
+    "terraform"
+  ]
+}
+
 resource "codefresh_pipeline" "example-homepage" {
 
   name = "${codefresh_project.luke-cf.name}/example-homepage"
@@ -13,12 +21,12 @@ resource "codefresh_pipeline" "example-homepage" {
       repo     = "hauskaffee/codefresh-example-homepage"
       path     = "./ci/codefresh.yaml"
       revision = "main"
-      context  = "hauskoffee"
+      context  = "hauskaffee"
     }
 
     trigger {
       branch_regex        = "/^((main)$).*/gi"
-      context             = "hauskoffee"
+      context             = "hauskaffee"
       description         = "Git Commit On Main excluding CD"
       name                = "Commit_On_Main"
       events              = ["push.heads"]
