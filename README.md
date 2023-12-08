@@ -8,6 +8,10 @@ This is a personal project using terraform to manage aws infrastructure. Also in
 
 This directory is for managing AWS infrastructure.  Mainly creating a VPC, EKS Cluster, and aditional items to make those work. Purpose is to create items easily for testing. Also to destroy all items when no longer needed for easier cleanup.
 
+### classic-pipelines
+
+Using terraform to create Codefresh pipelines and projects.
+
 ### classic-runtime
 
 Using terraform to install the Classic Runtime via helm.  Depends on aws-infra to be completed first as it relies on the outputs.

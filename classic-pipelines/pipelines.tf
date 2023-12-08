@@ -28,12 +28,17 @@ resource "codefresh_pipeline" "example-homepage" {
       type                = "git"
     }
 
+    # Need to Apply Trigger First before using cron_trigger. As you need to get the ID of the trigger.
     cron_trigger {
       expression     = "0 16 ? * MON"
       message        = "Weekly at 4pm UTC"
       name           = "Weekly"
       git_trigger_id = "6570f80c75be8c5abb413484"
       branch         = "main"
+    }
+
+    runtime_environment {
+      name = "luke-k8s-ayf4r180/cf-classic"
     }
 
     variables = {
