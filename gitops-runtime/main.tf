@@ -12,7 +12,7 @@ resource "helm_release" "gitops_runtime" {
   name             = "cf-gitops-runtime"
   repository       = "oci://quay.io/codefresh"
   chart            = "gitops-runtime"
-  version          = "0.3.4"
+  version          = "0.3.5"
   namespace        = "cf-gitops"
   create_namespace = true
   timeout          = 600
