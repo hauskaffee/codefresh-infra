@@ -12,7 +12,7 @@ resource "helm_release" "classic_runtime" {
   name             = "cf-classic-runtime"
   repository       = "oci://quay.io/codefresh"
   chart            = "cf-runtime"
-  version          = "6.3.3"
+  version          = "6.3.5"
   namespace        = "cf-classic"
   create_namespace = true
   timeout          = 600
