@@ -34,6 +34,7 @@ resource "codefresh_pipeline" "example-homepage" {
       provider            = "github"
       repo                = "hauskaffee/codefresh-example-homepage"
       type                = "git"
+      disabled = true
     }
 
     # Need to Apply Trigger First before using cron_trigger. As you need to get the ID of the trigger.
@@ -43,6 +44,7 @@ resource "codefresh_pipeline" "example-homepage" {
       name           = "Weekly"
       git_trigger_id = "6570f80c75be8c5abb413484"
       branch         = "main"
+      disabled = true
     }
 
     runtime_environment {
@@ -50,8 +52,34 @@ resource "codefresh_pipeline" "example-homepage" {
     }
 
     variables = {
-      SLACK_WEBHOOK_URL = "https://hooks.slack.com/triggers/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"
+      SLACK_WEBHOOK_URL = "https://hooks.slack.com/triggers/EXAMPLE"
     }
+  }
+
+}
+
+resource "codefresh_pipeline" "testing_pipeline" {
+
+  name = "${codefresh_project.luke-cf.name}/testing-pipeline"
+  tags = [
+    "terraform",
+    "testing"
+  ]
+
+  spec {
+    concurrency = 1
+
+    spec_template {
+      repo     = "hauskaffee/codefresh-testing"
+      path     = "./classic/testing.yaml"
+      revision = "main"
+      context  = "hauskaffee"
+    }
+
+    runtime_environment {
+      name = "luke-k8s-ayf4r180/cf-classic"
+    }
+
   }
 
 }
