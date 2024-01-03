@@ -11,9 +11,9 @@ resource "random_id" "generated" {
 
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
-  version = "~> 19.20.0"
+  version = ">= 19.21.0"
 
-  cluster_name                              = "${var.owner}-k8s-${random_id.generated.id}"
+  cluster_name                              = lower("${var.owner}-k8s-${random_id.generated.id}")
   cluster_version                           = 1.28
   cluster_endpoint_public_access            = true
   iam_role_use_name_prefix                  = false
@@ -81,7 +81,7 @@ module "eks" {
 
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
-  version = "~> 5.2.0"
+  version = ">= 5.4.0"
 
   name = "${var.owner}-vpc-${random_id.generated.id}"
   cidr = var.vpc_cidr

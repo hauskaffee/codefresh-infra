@@ -12,7 +12,7 @@ resource "helm_release" "gitops_runtime" {
   name             = "cf-gitops-runtime"
   repository       = "oci://quay.io/codefresh"
   chart            = "gitops-runtime"
-  version          = "0.3.5"
+  version          = "0.4.1"
   namespace        = "cf-gitops"
   create_namespace = true
   timeout          = 600
@@ -30,7 +30,7 @@ resource "helm_release" "gitops_runtime" {
 
   set {
     name  = "global.runtime.name"
-    value = lower("${data.terraform_remote_state.aws_infra.outputs.cluster_name}")
+    value = data.terraform_remote_state.aws_infra.outputs.cluster_name
   }
 
   set_sensitive {

@@ -11,7 +11,7 @@ terraform {
     organization = "hauskaffee"
 
     workspaces {
-      name = "pipelines"
+      name = "classic-pipelines"
     }
   }
 }

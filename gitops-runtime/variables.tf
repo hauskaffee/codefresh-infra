@@ -9,7 +9,7 @@ variable "codefresh_account" {
 }
 
 variable "gh_username" {
-  description = "githubs username"
+  description = "github username"
   sensitive   = true
 }
 

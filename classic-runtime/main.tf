@@ -12,7 +12,7 @@ resource "helm_release" "classic_runtime" {
   name             = "cf-classic-runtime"
   repository       = "oci://quay.io/codefresh"
   chart            = "cf-runtime"
-  version          = "6.3.5"
+  version          = "6.3.9"
   namespace        = "cf-classic"
   create_namespace = true
   timeout          = 600
@@ -30,12 +30,12 @@ resource "helm_release" "classic_runtime" {
 
   set {
     name  = "global.context"
-    value = lower("${data.terraform_remote_state.aws_infra.outputs.cluster_name}")
+    value = data.terraform_remote_state.aws_infra.outputs.cluster_name
   }
 
   set {
     name  = "global.agentName"
-    value = lower("${data.terraform_remote_state.aws_infra.outputs.cluster_name}")
+    value = data.terraform_remote_state.aws_infra.outputs.cluster_name
   }
 
 }

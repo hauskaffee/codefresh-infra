@@ -1,5 +1,5 @@
 output "app_version" {
-  description = "App version thats installed"
+  description = "App Version Thats Installed"
   value       = helm_release.gitops_runtime.metadata.0.app_version
 }
 
@@ -9,11 +9,11 @@ output "helm_chart_version" {
 }
 
 output "status" {
-  description = "The status of the helm chart"
+  description = "The Status Of The Helm Chart"
   value       = helm_release.gitops_runtime.status
 }
 
 output "post_install_commands" {
-  description = "Cli command for post install"
+  description = "CLI Command For Post Install"
   value       = "cf integration git register default --runtime ${data.terraform_remote_state.aws_infra.outputs.cluster_name} --token $CF_GITHUB_PAT"
 }

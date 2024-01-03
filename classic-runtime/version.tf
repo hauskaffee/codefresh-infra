@@ -12,7 +12,7 @@ terraform {
     organization = "hauskaffee"
 
     workspaces {
-      name = "classic"
+      name = "classic-runtimes"
     }
   }
 }

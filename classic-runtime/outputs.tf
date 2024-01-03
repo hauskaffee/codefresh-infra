@@ -1,5 +1,5 @@
 output "app_version" {
-  description = "App version thats installed"
+  description = "App Version Thats Installed"
   value       = helm_release.classic_runtime.metadata.0.app_version
 }
 
@@ -9,6 +9,6 @@ output "helm_chart_version" {
 }
 
 output "status" {
-  description = "The status of the helm chart"
+  description = "The Status Of The Helm Chart"
   value       = helm_release.classic_runtime.status
 }
