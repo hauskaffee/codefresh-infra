@@ -3,6 +3,7 @@ data "aws_availability_zones" "available" {}
 
 locals {
   azs = slice(data.aws_availability_zones.available.names, 0, 3)
+  account_id = data.aws_caller_identity.current.account_id
 }
 
 resource "random_id" "generated" {
@@ -103,3 +104,42 @@ module "vpc" {
   }
 
 }
+
+resource "aws_s3_bucket" "s3-bucket" {
+  bucket = lower("${var.owner}-s3-${random_id.generated.id}")
+
+  force_destroy = true
+
+}
+
+resource "aws_iam_role" "oidc-role" {
+  name = "${var.owner}-oidc-role"
+
+  managed_policy_arns = [
+    "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess",
+    "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryFullAccess"
+  ]
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = "sts:AssumeRoleWithWebIdentity"
+        Effect = "Allow"
+        Sid = "codefreshOIDC"
+        Principal = {
+          Federated = "arn:aws:iam::${local.account_id}:oidc-provider/oidc.codefresh.io"
+        }
+        Condition = {
+          StringEquals = {
+            "oidc.codefresh.io:aud" = "https://g.codefresh.io"
+          },
+          StringLike = {
+            "oidc.codefresh.io:sub" = "account:${var.codefresh_account}:*"
+          }
+        }
+      },
+    ]
+  })
+}
+

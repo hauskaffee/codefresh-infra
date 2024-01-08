@@ -3,6 +3,10 @@ variable "owner" {
   description = "Name of the owner of the resources"
 }
 
+variable "codefresh_account" {
+  description = "Account ID of the Codefresh Account"
+  sensitive   = true
+}
 
 variable "vpc_cidr" {
   type        = string
